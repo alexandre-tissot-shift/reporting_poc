@@ -1,0 +1,85 @@
+# A visualization is a visual representation of a user’s analytical view of the data.
+# You build visualizations from metrics, attributes, and optionally filters that are combined in a way to visualize a particular aspect of your data.
+# The visualizations are executed over and over as fresh data gets loaded.
+# Interpreting the content of a visualization is up to the user (the consumer of the visualization).
+# Read more about visualisations:
+# https://www.gooddata.com/developers/cloud-native/doc/cloud/create-visualizations/concepts/visualization/
+
+type: table
+id: 0633fd0c-945b-4ed1-be25-32f3c2c91eb1
+
+title: Alerts Per ScenarioName
+
+query:
+  fields:
+    2cce982112a546df96021f0d2cee452b:
+      title: AlertInit
+      aggregation: SUM
+      using: fact/alertcount
+      filter_by:
+        - type: attribute_filter
+          using: label/reportingstate
+          state:
+            include:
+              - Init
+    d5f36b78660e40dea9fa7cc935a8e5b8:
+      title: NotRelevant
+      aggregation: SUM
+      using: fact/alertcount
+      filter_by:
+        - type: attribute_filter
+          using: label/reportingstate
+          state:
+            include:
+              - NotRelevant
+    bc4a32f3bf804a68a89ca291f6cfa23f:
+      title: RelevantToInvestigate
+      aggregation: SUM
+      using: fact/alertcount
+      filter_by:
+        - type: attribute_filter
+          using: label/reportingstate
+          state:
+            include:
+              - RelevantToInvestigate
+    6bf1cedb989a4aedafb1314768c6728f:
+      title: NotConverted
+      aggregation: SUM
+      using: fact/alertcount
+      filter_by:
+        - type: attribute_filter
+          using: label/reportingstate
+          state:
+            include:
+              - NotConverted
+    c1b9ac5d07024d25b25050bce19ec89e:
+      title: Converted
+      aggregation: SUM
+      using: fact/alertcount
+      filter_by:
+        - type: attribute_filter
+          using: label/reportingstate
+          state:
+            include:
+              - Converted
+    956c8dd2e3aa40a9bb893c3b46ae66ba: label/scenarioname
+
+  sort_by:
+    - type: attribute_sort
+      by: 956c8dd2e3aa40a9bb893c3b46ae66ba
+      direction: ASC
+
+metrics:
+  - field: 2cce982112a546df96021f0d2cee452b
+    format: "#,##0.00"
+  - field: d5f36b78660e40dea9fa7cc935a8e5b8
+    format: "#,##0.00"
+  - field: bc4a32f3bf804a68a89ca291f6cfa23f
+    format: "#,##0.00"
+  - field: 6bf1cedb989a4aedafb1314768c6728f
+    format: "#,##0.00"
+  - field: c1b9ac5d07024d25b25050bce19ec89e
+    format: "#,##0.00"
+
+view_by:
+  - 956c8dd2e3aa40a9bb893c3b46ae66ba

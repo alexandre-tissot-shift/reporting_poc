@@ -1,0 +1,8 @@
+profiles:
+  dev:
+    host: https://scholarly-emu.trial.cloud.gooddata.com/
+    token: $GOODDATA_API_TOKEN
+    workspace_id: 9fa384e3a6e143d68d64f0af37f82f7a
+    data_source: e06901e3-23f7-497c-ad47-07c6ed560da1
+source_dir: analytics
+default_profile: dev

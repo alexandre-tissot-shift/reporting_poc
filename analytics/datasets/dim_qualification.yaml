@@ -1,0 +1,50 @@
+# A dataset is a logical object that represents a set of related facts, attributes, and attribute labels.
+# Datasets are basic organization units of a logical data model.
+# Read more about Datasets:
+# https://www.gooddata.com/developers/cloud-native/doc/cloud/model-data/concepts/dataset/
+
+type: dataset
+id: dim_qualification
+
+table_path: alexo_poc/dim_qualification
+
+title: Dim qualification
+description: Dim qualification
+tags:
+  - Dim qualification
+
+primary_key: dim_qualification.qualificationId
+
+fields:
+  dim_qualification.qualificationId:
+    type: attribute
+    source_column: qualificationId
+    data_type: INT
+    title: QualificationId
+    description: QualificationId
+    tags:
+      - Dim qualification
+  reportingstate:
+    type: attribute
+    source_column: reportingstate
+    data_type: STRING
+    title: Reportingstate
+    description: Reportingstate
+    tags:
+      - Dim qualification
+  workflowaction:
+    type: attribute
+    source_column: workflowaction
+    data_type: STRING
+    title: Workflowaction
+    description: Workflowaction
+    tags:
+      - Dim qualification
+  workflowstate:
+    type: attribute
+    source_column: workflowstate
+    data_type: STRING
+    title: Workflowstate
+    description: Workflowstate
+    tags:
+      - Dim qualification

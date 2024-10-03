@@ -1,0 +1,52 @@
+# A dashboard is a collection of visualizations that are organized into sections.
+# Because they allow filtering and other adjustments, they function as a dynamic presentation layer for your data analytics.
+# Read more about dashboards:
+# https://www.gooddata.com/docs/cloud/create-dashboards/concepts/dashboard/
+
+type: dashboard
+id: 1e9f9916-129c-437a-a5a7-3519c0f636e4
+
+title: Template Performance Review
+
+sections:
+  - title: Transformation Funnel
+    widgets:
+      - visualization: 5d1ec445-12a6-4107-ba77-41e239e03f6d
+        title: Alert Sent
+        columns: 2
+        rows: 8
+      - visualization: b784dc0d-7c9f-4f76-83b4-4fdda09758ee
+        title: RelevantToInvestigate
+        columns: 2
+        rows: 8
+      - visualization: 87cbdd4b-d572-43d4-8839-b9e955d90365
+        title: Converted
+        columns: 2
+        rows: 8
+      - visualization: 0633fd0c-945b-4ed1-be25-32f3c2c91eb1
+        title: Alerts By ScenarioName
+        columns: 12
+        rows: 22
+
+filters:
+  date_month:
+    type: date_filter
+    granularity: MONTH
+    from: 0
+    to: 0
+  05a0e87633d0445381c1d560cc8def9b:
+    type: attribute_filter
+    using: label/claimcause
+  51bcbbd29f7c43629d09320e4ca4244d:
+    type: attribute_filter
+    using: label/lob
+  ea2d1c6081494837b6b4fab2d8c69dee:
+    type: attribute_filter
+    using: label/scenarioname
+
+permissions:
+  VIEW:
+    all: true
+  EDIT:
+    users:
+      - cc9d9695-169f-493d-b703-dabe495ed458
