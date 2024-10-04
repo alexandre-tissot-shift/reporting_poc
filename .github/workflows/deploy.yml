@@ -21,4 +21,4 @@ jobs:
           python -m pip install --upgrade pip
           pip install gooddata-sdk
       - name: Run deploy script
-        run: python deploy.py
+        run: python .github/workflows/deploy.py
