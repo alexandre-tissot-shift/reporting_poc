@@ -41,7 +41,7 @@ for demoDashboard in demoDashboards:
 
 for prodDashboard in prodDashboards:
   if prodDashboard.id not in demoDashboardIds:
-    demoDashboards.add(prodDashboard)
+    demoDashboards.append(prodDashboard)
 
 print(demo_declarative_analytics_model.analytics.analytical_dashboards)
 
