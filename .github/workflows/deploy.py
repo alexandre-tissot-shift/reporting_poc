@@ -30,7 +30,7 @@ prod_declarative_analytics_model = sdk.catalog_workspace_content.get_declarative
 )
 
 demoDashboards = demo_declarative_analytics_model.analytics.analytical_dashboards
-productionDashboards = prod_declarative_analytics_model.analytics.analytical_dashboards
+prodDashboards = prod_declarative_analytics_model.analytics.analytical_dashboards
 
 print(demo_declarative_analytics_model.analytics.analytical_dashboards)
 
