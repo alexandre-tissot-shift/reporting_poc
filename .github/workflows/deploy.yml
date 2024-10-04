@@ -1,0 +1,24 @@
+name: Deploy analytics to production
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Deploy analytics to production'
+        required: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+            python-version: 3.8
+      - name: Install GoodData Python SDK
+        run: |
+          python -m pip install --upgrade pip
+          pip install gooddata-sdk
+      - name: Run deploy script
+        run: python deploy.py
