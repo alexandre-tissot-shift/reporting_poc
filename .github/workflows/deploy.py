@@ -24,11 +24,6 @@ declarative_analytics_model = sdk.catalog_workspace_content.get_declarative_anal
   demo_workspace_id
 )
 
-# Get analytics model (metrics, dashboards, etc.) from Prod workspace
-declarative_analytics_model = sdk.catalog_workspace_content.get_declarative_analytics_model(
-  production_workspace_id
-)
-
 # Put LDM (Logical Data Model) to production workspace
 sdk.catalog_workspace_content.put_declarative_ldm(
   production_workspace_id,
