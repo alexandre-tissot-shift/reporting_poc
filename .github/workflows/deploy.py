@@ -20,21 +20,41 @@ declarative_ldm = sdk.catalog_workspace_content.get_declarative_ldm(
 )
 
 # Get analytics model (metrics, dashboards, etc.) from Demo workspace
-declarative_analytics_model = sdk.catalog_workspace_content.get_declarative_analytics_model(
+demo_declarative_analytics_model = sdk.catalog_workspace_content.get_declarative_analytics_model(
   demo_workspace_id
 )
+
+# Get analytics model (metrics, dashboards, etc.) from Prod workspace
+prod_declarative_analytics_model = sdk.catalog_workspace_content.get_declarative_analytics_model(
+  production_workspace_id
+)
+
+demoDashboards = demo_declarative_analytics_model.analytics.analytical_dashboards
+productionDashboards = prod_declarative_analytics_model.analytics.analytical_dashboards
+
+print(demo_declarative_analytics_model.analytics.analytical_dashboards)
+
+print()
+demoDashboardIds = set()
+for demoDashboard in demoDashboards:
+  demoDashboardIds.add(demoDashboard.id)
+
+for prodDashboard in prodDashboards:
+  if prodDashboard.id not in demoDashboardIds:
+    demoDashboards.add(prodDashboard)
+
+print(demo_declarative_analytics_model.analytics.analytical_dashboards)
 
 # Put LDM (Logical Data Model) to production workspace
 sdk.catalog_workspace_content.put_declarative_ldm(
   production_workspace_id,
   declarative_ldm
 )
-a = declarative_analytics_model.analytics.analytical_dashboards
 
-print(a)
+
 
 # Put analytics model (metrics, dashboards, etc.) to production workspace
 sdk.catalog_workspace_content.put_declarative_analytics_model(
   production_workspace_id,
-  declarative_analytics_model
+  demo_declarative_analytics_model
 )
