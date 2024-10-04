@@ -29,7 +29,7 @@ sdk.catalog_workspace_content.put_declarative_ldm(
   production_workspace_id,
   declarative_ldm
 )
-a = declarative_analytics_model.analytics
+a = declarative_analytics_model.analytics.analytical_dashboards
 
 print(a)
 
