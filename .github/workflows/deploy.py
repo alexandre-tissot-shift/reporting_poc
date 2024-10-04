@@ -11,7 +11,7 @@ sdk = GoodDataSdk.create(host, token)
 
 # Create workspace
 sdk.catalog_workspace.create_or_update(
-  CatalogWorkspace(production_workspace_id, production_workspace_id)
+  CatalogWorkspace(production_workspace_id, "Prod")
 )
 
 # Get LDM (Logical Data Model) from demo workspace
@@ -19,9 +19,14 @@ declarative_ldm = sdk.catalog_workspace_content.get_declarative_ldm(
   demo_workspace_id
 )
 
-# Get analytics model (metrics, dashboards, etc.) from demo workspace
+# Get analytics model (metrics, dashboards, etc.) from Demo workspace
 declarative_analytics_model = sdk.catalog_workspace_content.get_declarative_analytics_model(
   demo_workspace_id
+)
+
+# Get analytics model (metrics, dashboards, etc.) from Prod workspace
+declarative_analytics_model = sdk.catalog_workspace_content.get_declarative_analytics_model(
+  production_workspace_id
 )
 
 # Put LDM (Logical Data Model) to production workspace
