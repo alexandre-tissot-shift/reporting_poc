@@ -32,9 +32,7 @@ prod_declarative_analytics_model = sdk.catalog_workspace_content.get_declarative
 demoDashboards = demo_declarative_analytics_model.analytics.analytical_dashboards
 prodDashboards = prod_declarative_analytics_model.analytics.analytical_dashboards
 
-print(demo_declarative_analytics_model.analytics.analytical_dashboards)
 
-print()
 demoDashboardIds = set()
 for demoDashboard in demoDashboards:
   demoDashboardIds.add(demoDashboard.id)
@@ -43,7 +41,15 @@ for prodDashboard in prodDashboards:
   if prodDashboard.id not in demoDashboardIds:
     demoDashboards.append(prodDashboard)
 
-print(demo_declarative_analytics_model.analytics.analytical_dashboards)
+demoFilterContextIds = set()
+for demoFilterContext in demo_declarative_analytics_model.analytics.filter_contexts:
+    demoFilterContextIds.add(demoFilterContext.id)
+
+for prodFilterContext in prod_declarative_analytics_model.analytics.filter_contexts:
+    if prodFilterContext.id not in demoFilterContextIds:
+        demo_declarative_analytics_model.analytics.filter_contexts.append(prodFilterContext)
+
+
 
 # Put LDM (Logical Data Model) to production workspace
 sdk.catalog_workspace_content.put_declarative_ldm(
